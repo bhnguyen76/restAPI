@@ -17,7 +17,7 @@
    performance challenges as the project scales. Specifically, the O(n) time complexity for searching, inserting, and removing elements from the list can become a bottleneck 
    as the amount of transactions increases. This would be a major concern if the application needed to handle a larger dataset or higher throughput. 
 
-   On the other hand, I made a consicous effort to follow clean code practices throughout the project, such as adhering to naming conventions and maintaining modularity in my code.
+   On the other hand, I made a conscious effort to follow clean code practices throughout the project, such as adhering to naming conventions and maintaining modularity in my code.
    These practices were intended to improve the usability of the API and make it easier for others to read my code. However, I recognize that there are likely areas where I could
    have done more, and it is also possible that I overlooked other aspects of scalability, performance, or code quality that could improve the overall solution.
 
