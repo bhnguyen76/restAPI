@@ -1,0 +1,32 @@
+1) When I initially read the prompt, my first thought was to use Python with Bottle or Flask, given my previous work experience with them. However, I ultimately decided to build 
+   the REST API using C# and .NET Core for several key reasons. The primary factor was performance. While Python and Flask are easy to use and would have made the development 
+   process simpler, I was aware of Python's limitations, particularly its lower performance due to being a dynamically-typed language. 
+
+   Additionally, I am familiar with the .NET ecosystem, having worked with it on personal and school projects. I knew that using Visual Studio would significantly streamline 
+   development, thanks to its set of tools. Furthermore, I have experience with Entity Framework (EF), a Object-Relational Mapping (ORM) library, which would make it easier to 
+   connect to a persistent SQL database if needed.
+
+   Lastly, the integration of Swagger and Swashbuckle in .NET Core made it extremely easy to generate API documentation and a UI for testing and using the endpoints. This 
+   further solidified my decision, as it made the development process more efficient and improved the overall usability of the API.
+
+2) In my solution, scalability and performance were my primary considerations. I believe the REST API is designed in a way that could scale effectively through several means. 
+   For example, integrating a persistent SQL database through EF would be relatively simple, and this would help address data persistence and scalability needs as the system 
+   grows. Additionally, C# and .NET Core are well-suited to handle increased workload demands, whether from more users or the introduction of additional routes.
+
+   However, the most significant flaw in my solution is the use of an in-memory list to store transactions. While using a list is convenient for quick implementations, it presents 
+   performance challenges as the project scales. Specifically, the O(n) time complexity for searching, inserting, and removing elements from the list can become a bottleneck 
+   as the amount of transactions increases. This would be a major concern if the application needed to handle a larger dataset or higher throughput. 
+
+   On the other hand, I made a consicous effort to follow clean code practices throughout the project, such as adhering to naming conventions and maintaining modularity in my code.
+   These practices were intended to improve the usability of the API and make it easier for others to read my code. However, I recognize that there are likely areas where I could
+   have done more, and it is also possible that I overlooked other aspects of scalability, performance, or code quality that could improve the overall solution.
+
+3) One of my favorite projects so far was in a Software Engineering class where we worked on a semester-long project involving UML diagrams and Java. It helped me appreciate
+   the value of creating structured diagrams to plan out complex systems and building an application based on those plans within a team setting. The most challenging part of
+   this project was managing team communication. Near the end, one of my team members struggled with his portion of the work, and I offered to help through peer programming. 
+   This situation was a real lesson in how crucial clear communication, responsibility, and time management are in group projects.
+
+   Currently, I’m working on a fitness tracker as part of a group project, which combines my passion for fitness with coding. We are using many of the same tools I
+   used to build the REST API, along with other technologies like OpenAI. I am also expanding my skill set by learning  how to handle user authorization, and implementing 
+   CI/CD with GitHub Actions. While it's been a rewarding experience, it’s also presented challenges, especially as we integrate features like dynamic workout routines and 
+   goal tracking.
