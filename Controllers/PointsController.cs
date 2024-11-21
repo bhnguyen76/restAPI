@@ -8,14 +8,15 @@ namespace restAPI.Controllers
     public class PointsController : Controller
     {
         //Read only Transaction Service
-        private readonly TransactionService _transactionService;
+        private readonly PointsService _pointsService;
 
-        //Dependency inject the TransactionService
-        public PointsController(TransactionService transactionService)
+        //Dependency inject the pointsService
+        public PointsController(PointsService pointsService)
         {
-            _transactionService = transactionService;
+            _pointsService = pointsService;
         }
 
+        //POST /add - Add points transactions
         [HttpPost("add")]
         public IActionResult AddTransaction([FromBody] Transaction transaction)
         {
@@ -24,11 +25,12 @@ namespace restAPI.Controllers
                 return BadRequest("Invalid transaction data");
             }
 
-            _transactionService.AddTransaction(transaction);   
+            _pointsService.AddTransaction(transaction);   
 
             return Ok();
         }
 
+        //POST /spend - Spend points
         [HttpPost("spend")]
         public IActionResult SpendPoints([FromBody] SpendRequest request)
         {
@@ -39,7 +41,7 @@ namespace restAPI.Controllers
 
             try
             {
-                var result = _transactionService.SpendPoints(request.Points);
+                var result = _pointsService.SpendPoints(request.Points);
 
                 return Ok(result);
             }
@@ -49,11 +51,11 @@ namespace restAPI.Controllers
             }
         }
 
+        //GET /balance - Gets points balance
         [HttpGet("balance")]
         public IActionResult GetBalance()
         {
-            var balance = _transactionService.GetPointsBalance();
-
+            var balance = _pointsService.GetPointsBalance();
             return Ok(balance);
         }
     }
