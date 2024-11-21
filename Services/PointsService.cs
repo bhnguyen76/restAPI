@@ -32,7 +32,7 @@ namespace restAPI.Services
             }
         }
 
-        public List<SpendTransaction> SpendPoints(int points)
+        public Dictionary<string, int> SpendPoints(int points)
         {
             //check if the User has enough points. If not, throw error 
             if (points > _balance.Values.Sum())
@@ -40,7 +40,8 @@ namespace restAPI.Services
                 throw new InvalidOperationException("User does not have enough points.");
             }
 
-            var result = new List<SpendTransaction>();
+            //Use dictionary to track results and reduce redundancy 
+            var result = new Dictionary<string, int>();  
             var pointsToSpend = points;
 
             //sort the transactions by their Timestamps with the oldest coming first
@@ -58,7 +59,14 @@ namespace restAPI.Services
                 pointsToSpend -= pointsToDeduct;
 
                 //add transaction to result
-                result.Add(new SpendTransaction { Payer = transaction.Payer, Points = -pointsToDeduct });
+                if (result.ContainsKey(transaction.Payer))
+                {
+                    result[transaction.Payer] -= pointsToDeduct;  
+                }
+                else
+                {
+                    result[transaction.Payer] = -pointsToDeduct;  
+                }
             }
 
             return result;
