@@ -8,6 +8,16 @@ namespace restAPI.Services
         private readonly Dictionary<string, int> _balance = new Dictionary<string, int>();
         public void AddTransaction(Transaction transaction)
         {
+            //Handle negative point transactions
+            if (transaction.Points < 0)  
+            {
+                //Make sure the Payer is already in balance and has enough points
+                if (!_balance.ContainsKey(transaction.Payer) || _balance[transaction.Payer] + transaction.Points < 0)
+                {
+                    throw new InvalidOperationException("Not enough points to deduct.");
+                }
+            }
+
             //Add transaction to the transactions list
             _transactions.Add(transaction);
 
@@ -38,13 +48,16 @@ namespace restAPI.Services
 
             foreach (var transaction in sortedTransactions)
             {
+                //break if transactions have already covered the points to spend
                 if (pointsToSpend <= 0) break;
 
+                //find minimum between points to spend and the transaction's points to figure out which one to deduct
                 int pointsToDeduct = Math.Min(pointsToSpend, transaction.Points);
 
                 _balance[transaction.Payer] -= pointsToDeduct;
                 pointsToSpend -= pointsToDeduct;
 
+                //add transaction to result
                 result.Add(new SpendTransaction { Payer = transaction.Payer, Points = -pointsToDeduct });
             }
 

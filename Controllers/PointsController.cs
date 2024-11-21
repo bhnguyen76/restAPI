@@ -25,7 +25,14 @@ namespace restAPI.Controllers
                 return BadRequest("Invalid transaction data");
             }
 
-            _pointsService.AddTransaction(transaction);   
+            try
+            {
+                _pointsService.AddTransaction(transaction);
+            }
+            catch (InvalidOperationException)
+            {
+                return BadRequest("Not enough points to deduct.");
+            }
 
             return Ok();
         }
