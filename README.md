@@ -11,3 +11,8 @@ This repository contains a REST API that helps track points and point transactio
 3. Run the project
    ```
    dotnet run
+## How to access the API
+The API can be accessed through two methods: a UI and curl
+1. To access the UI, navigate to
+   ```
+   http://localhost:8000/swagger
