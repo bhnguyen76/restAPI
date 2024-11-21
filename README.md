@@ -1,5 +1,7 @@
 # restAPI
 This repository contains a REST API that helps track points and point transactions for the Fetch Backend Internship Challenge. The API contains endpoints to add points, spend points, and get points balance.
+## Prerequisite
+   This project was built using .NET 8.0, so you will need to download and install the .NET SDK from the official Microsoft [.NET website](https://dotnet.microsoft.com/en-us/download).
 ## Setup Instructions
 1. Clone the repository and navigate to the project
    ```
